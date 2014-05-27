@@ -6,7 +6,7 @@ Things Done:
 By:
 
 Date: 5.26.14
-Time:
+Time: 12:00
 Things Done: Created the github repo
 By: Jenny
 
