@@ -19,3 +19,8 @@ Date: 5.27.14
 Time: 13:30
 Things Done: Re-emailed the proposal because the subject of the email was wrong (oops)
 By: Keka
+
+Date: 5.27.14
+Time: 14:45
+Things Done: researched open-world gaming, figured out dynamic tree structure (see issue #1)
+By: Jenny
