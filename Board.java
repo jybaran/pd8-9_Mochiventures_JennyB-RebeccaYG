@@ -17,18 +17,30 @@ public class Board {
     }
 
     public void add(Level lev){
-	if (size == 0){
+	if ( size == 0 ) {
 	    root = lev;
-	    return;
-	} else if (rightSize >= leftSize) {//slightly leans left
+	}
+	else if ( rightSize >= leftSize ) {//r = l or is one larger than l
 	    Level temp = root;
 
-	    while (temp.getChild() != null) 
-		temp = temp.getChild(); // goes to the last element 
-
-	    temp.setChild(lev);
-	    return;
-	}
+	    while ( temp.getLChild() != null ) {
+		temp = temp.getLChild(); // goes to the last element 
+	    }
 	    
+	    temp.setLChild(lev);
+	    leftSize++;
+	}
+	else {
+	    Level temp = root;
+
+	    while ( temp.getRChild() != null ) {
+		temp = temp.getRChild();
+	    }
+	    
+	    temp.setRChild(lev);
+	    rightSize++;
+	}
+	size++;
+    }	    
 	    
 }

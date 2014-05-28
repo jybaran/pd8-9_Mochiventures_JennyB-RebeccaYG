@@ -11,6 +11,8 @@ public class Level {
     private final int number;
     private Level parent;
     //question: do we want to have a child instance variable?
+    //not sure i understand this? we have inst vars for both children?
+    //also, do we need parent? (also how do we track if we've visted all the locations)
     private Level rightChild;
     private Level leftChild;
 
@@ -39,7 +41,7 @@ public class Level {
 	return rightChild;
     }
     
-    public level getLChild() {
+    public Level getLChild() {
 	return leftChild;
     }
     //end of get methods

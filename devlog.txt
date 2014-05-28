@@ -5,27 +5,34 @@ Time:
 Things Done:
 By:
 
-Date: 5.26.14
+Date: 2014-05-26
 Time: 12:00
 Things Done: Created the github repo
 By: Jenny
 
-Date: 5.26.14
+Date: 2014-05-26
 Time: 23:00
 Things Done: Filled out the google form, emailed project proposal to Mr. Brown
 By: Keka
 
-Date: 5.27.14
+Date: 2014-05-27
 Time: 13:30
 Things Done: Re-emailed the proposal because the subject of the email was wrong (oops)
 By: Keka
 
-Date: 5.27.14
+Date: 2014-05-27
 Time: 14:45
 Things Done: researched open-world gaming, figured out dynamic tree structure (see issue #1)
 By: Jenny
 
-Date: 5.28.14
+Date: 2014-05-28
 Time: 13:50
 Things Done: Did some work on the level and game board. got an error at the end of class :(
 By: Keka
+
+Date: 2014-05-28
+Time: 14:30
+Things Done: fixed errors with level & game board
+   -in Level, one of the methods had a return type of level instead of Level
+   -in Board, add method needed another case for if right branch smaller than left. also, made calls to non-existent methods getChild & setChild, replaced with calls to methods to get/set the appropriate child (left if adding to left branch & vice versa)
+By: Jenny
