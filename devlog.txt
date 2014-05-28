@@ -24,3 +24,8 @@ Date: 5.27.14
 Time: 14:45
 Things Done: researched open-world gaming, figured out dynamic tree structure (see issue #1)
 By: Jenny
+
+Date: 5.28.14
+Time: 13:50
+Things Done: Did some work on the level and game board. got an error at the end of class :(
+By: Keka
