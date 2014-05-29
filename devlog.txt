@@ -41,3 +41,7 @@ Date: 2014-05-29
 Time: 13:55
 Things Done: Created a super super super simple driver file, started the player file and the item file
 By: Keka
+
+Date: 2014-05-29
+Time: 14:45
+Things Done: thought about tanuki battles, added to player file
