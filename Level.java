@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.util.*;
 
@@ -15,6 +16,7 @@ public class Level {
     //also, do we need parent? (also how do we track if we've visted all the locations)
     private Level rightChild;
     private Level leftChild;
+    private boolean visited;
 
     public Level (String s, int n){
 	name = s;
@@ -22,6 +24,7 @@ public class Level {
 	parent = null;
 	rightChild = null;
 	leftChild = null;
+	visited = true;
     }
 
     // get methods
@@ -44,6 +47,10 @@ public class Level {
     public Level getLChild() {
 	return leftChild;
     }
+
+    public boolean visited() {
+	return visited;
+    }
     //end of get methods
 
     //set methods
@@ -57,6 +64,10 @@ public class Level {
     
     public void setLChild(Level l){
 	leftChild = l;
+    }
+
+    public void visit() {
+	visited = false;
     }
     //end of set methods
     

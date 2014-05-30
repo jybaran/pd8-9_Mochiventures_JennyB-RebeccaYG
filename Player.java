@@ -19,7 +19,9 @@ public class Player {
     }
 
     public Player( String name ) {
-	this();
+	_name = "Kia"; // i hope you're coming today bc shes gonna be there
+	_level = null;
+	_health = 100;
 	_name = name;
     }
 

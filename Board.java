@@ -27,7 +27,8 @@ public class Board {
 		temp = temp.getLChild(); // goes to the last element 
 	    }
 	    
-	    temp.setLChild(lev);
+	    temp.setLChild(lev);		
+	    lev.setParent(temp);
 	    leftSize++;
 	}
 	else {
@@ -37,10 +38,27 @@ public class Board {
 		temp = temp.getRChild();
 	    }
 	    
-	    temp.setRChild(lev);
+	    temp.setRChild(lev);		
+	    lev.setParent(temp);
 	    rightSize++;
 	}
 	size++;
     }	    
+
+    public void levelUpLeft() {//moving to the next level
+	Level temp = root.getLChild();
+	temp.setRChild( root.getRChild() );
+	root.getRChild().setParent(temp);
+	temp.setParent(null);
+	root = temp;
+    }
+
+    public void levelUpRight() {//moving to the next level;
+	Level temp = root.getRChild();
+	temp.setLChild( root.getLChild() );
+	root.getLChild().setParent(temp);
+	temp.setParent(null);
+	root = temp;
+    }
 	    
 }
