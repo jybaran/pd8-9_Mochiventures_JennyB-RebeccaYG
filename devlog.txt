@@ -45,3 +45,10 @@ By: Keka
 Date: 2014-05-29
 Time: 14:45
 Things Done: thought about tanuki battles, added to player file
+By: Jenny
+
+
+Date: 2014-05-30
+Time: 13:50
+Things Done: Worked on player and level and board
+By: Keka
