@@ -10,7 +10,7 @@ public class Board {
     //always want to have a somewhat balanced board
     
     public Board() {
-	root = null;
+	root = null
 	size = 0;
 	rightSize = 0;
 	leftSize = 0;
@@ -47,6 +47,7 @@ public class Board {
 
     public void levelUpLeft() {//moving to the next level
 	Level temp = root.getLChild();
+	temp.visit();
 	temp.setRChild( root.getRChild() );
 	root.getRChild().setParent(temp);
 	temp.setParent(null);
@@ -55,6 +56,7 @@ public class Board {
 
     public void levelUpRight() {//moving to the next level;
 	Level temp = root.getRChild();
+	temp.visit();
 	temp.setLChild( root.getLChild() );
 	root.getLChild().setParent(temp);
 	temp.setParent(null);

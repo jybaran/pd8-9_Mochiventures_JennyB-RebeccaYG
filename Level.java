@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Level {
     
-    private final String name;
+    private String description = "";
     private final int number;
     private Level parent;
     //question: do we want to have a child instance variable?
@@ -18,18 +18,27 @@ public class Level {
     private Level leftChild;
     private boolean visited;
 
-    public Level (String s, int n){
-	name = s;
+    public Level (String filename, int n){
 	number = n;
 	parent = null;
 	rightChild = null;
 	leftChild = null;
 	visited = true;
+	
+	try{
+	    Scanner sc = new Scanner(new File(filename));
+	    while ( sc.hasNext() )
+		description = description + sc.nextLine();
+	} catch (Exception e){
+	    System.out.println("oops file not found");
+	    description = "you need to read a file in";
+	}
+
     }
 
     // get methods
-    public String getName() {
-	return name;
+    public String getDescription() {
+	return description;
     }
 
     public int getNumber() {
