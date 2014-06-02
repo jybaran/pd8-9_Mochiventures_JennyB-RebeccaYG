@@ -52,3 +52,8 @@ Date: 2014-05-30
 Time: 13:50
 Things Done: Worked on player and level and board
 By: Keka
+
+Date: 2014-06-02
+Time: 13:50
+Things Done: figured out how to read in files as the description for levels! very exciting stuff
+By: Keka
