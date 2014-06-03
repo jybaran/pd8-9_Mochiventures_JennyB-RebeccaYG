@@ -5,25 +5,23 @@ public class Player {
     String _name;
     Level _level;
     int _health;
-    ItemQueue items;
+    ItemQueue _iQ;
 
     public Player( Level lvl ) {
 	_name = "Kia"; //shoutout to the bae
 	_level = lvl;
 	/**********
 	 * when player is created in board/driver/wherever,
-	 * the root of the board tree is lvl (additionally,
+	 * lvl is the root of the board tree (additionally,
 	 * this makes it easy if we ever want to test the game
-	 * from the middle.
+	 * from the middle).
 	 **********/
 	_health = 100;
-	item = new ItemQueue();
+	_iQ = new ItemQueue();
     }
 
-    public Player( String name ) {
-	_name = "Kia"; // i hope you're coming today bc shes gonna be there
-	_level = null;
-	_health = 100;
+    public Player( String name, Level lvl ) {
+	this(lvl);
 	_name = name;
     }
 
