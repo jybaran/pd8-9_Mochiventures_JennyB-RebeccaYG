@@ -13,9 +13,9 @@ I hope you're having a rad day :)
 5.29.14 (Thusday): look into reading in files, build driver, look into a queue for things collected maybe
 5.30.14 - 6.1.14 (Weekend):  osiris's birthday! 
 
-6.2.14 (Monday): 
+6.2.14 (Monday): figure out how to read in files
 6.3.14 (Tuesday): TANUUUKIIIII
-6.4.14 - 6.5.14 (Wednesday-Thursday): jprom + camp stuy
+6.4.14 - 6.5.14 (Wednesday-Thursday): (jprom + camp stuy) we will meet and figure out some board and player details
 6.6.14 - 6.8.14 (Weekend):
 
 6.9.14 (Monday): TANUKI TANUKI TANUKI
