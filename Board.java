@@ -3,25 +3,25 @@ import java.util.*;
 
 public class Board {
     
-    Level root;
-    int size;
-    int rightSize;
-    int leftSize;
+    Level _root;
+    int _size;
+    int _rightSize;
+    int _leftSize;
     //always want to have a somewhat balanced board
     
     public Board() {
-	root = null
-	size = 0;
-	rightSize = 0;
-	leftSize = 0;
+	_root = null
+	_size = 0;
+	_rightSize = 0;
+	_leftSize = 0;
     }
 
     public void add(Level lev){
-	if ( size == 0 ) {
-	    root = lev;
+	if ( _size == 0 ) {
+	    _root = lev;
 	}
-	else if ( rightSize >= leftSize ) {//r = l or is one larger than l
-	    Level temp = root;
+	else if ( _rightSize >= _leftSize ) {//r = l or is one larger than l
+	    Level temp = _root;
 
 	    while ( temp.getLChild() != null ) {
 		temp = temp.getLChild(); // goes to the last element 
@@ -29,10 +29,10 @@ public class Board {
 	    
 	    temp.setLChild(lev);		
 	    lev.setParent(temp);
-	    leftSize++;
+	    _leftSize++;
 	}
 	else {
-	    Level temp = root;
+	    Level temp = _root;
 
 	    while ( temp.getRChild() != null ) {
 		temp = temp.getRChild();
@@ -40,27 +40,27 @@ public class Board {
 	    
 	    temp.setRChild(lev);		
 	    lev.setParent(temp);
-	    rightSize++;
+	    _rightSize++;
 	}
-	size++;
+	_size++;
     }	    
 
     public void levelUpLeft() {//moving to the next level
-	Level temp = root.getLChild();
+	Level temp = _root.getLChild();
 	temp.visit();
-	temp.setRChild( root.getRChild() );
-	root.getRChild().setParent(temp);
+	temp.setRChild( _root.getRChild() );
+	_root.getRChild().setParent(temp);
 	temp.setParent(null);
-	root = temp;
+	_root = temp;
     }
 
     public void levelUpRight() {//moving to the next level;
-	Level temp = root.getRChild();
+	Level temp = _root.getRChild();
 	temp.visit();
-	temp.setLChild( root.getLChild() );
-	root.getLChild().setParent(temp);
+	temp.setLChild( _root.getLChild() );
+	_root.getLChild().setParent(temp);
 	temp.setParent(null);
-	root = temp;
+	_root = temp;
     }
 	    
 }

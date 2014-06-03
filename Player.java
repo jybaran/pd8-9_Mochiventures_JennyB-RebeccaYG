@@ -6,6 +6,7 @@ public class Player {
     Level _level;
     int _health;
     ItemQueue _iQ;
+    int _mochi;
 
     public Player( Level lvl ) {
 	_name = "Kia"; //shoutout to the bae
@@ -42,14 +43,29 @@ public class Player {
     //don't worry about it! elaborate on queue of items?
 
     public void obtainItem(String s){
-	items.enqueue(s);
+	iQ.enqueue(s);
     }
     public String peekItem() {
-	return items.peekFront();
+	return iQ.peekFront();
     }
 
     public String useItem() {
-	items.dequeue;
+	return iQ.dequeue();
+    }
+
+    public void obtainMochi( int i ) {
+	//you get mochi randomly at the start of a level
+	//and also if you correctly answer a tanuki's question
+	_mochi += i;
+    }
+        
+    public void useMochi( int i ) {
+	/*********
+	 * throwing mochi at a tanuki calls this with
+	 * i = 1 (so you throw mochi at the tanuki one
+	 * at a time and hope it goes away)
+	 *********/
+	_mochi -= i;
     }
 
 }
