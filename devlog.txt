@@ -57,3 +57,8 @@ Date: 2014-06-02
 Time: 13:50
 Things Done: figured out how to read in files as the description for levels! very exciting stuff
 By: Keka
+
+Date: 2014-06-03
+Time: 13:50
+Things Done: worked on the node and queue. talked to mr brown about creating a class for an item, and having each node in the queue contain an item.
+By: keka
