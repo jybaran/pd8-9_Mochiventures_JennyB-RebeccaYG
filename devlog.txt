@@ -61,4 +61,9 @@ By: Keka
 Date: 2014-06-03
 Time: 13:50
 Things Done: worked on the node and queue. talked to mr brown about creating a class for an item, and having each node in the queue contain an item.
-By: keka
+By: Keka
+
+Date: 2014-06-03
+Time: 14:45
+Things Done: Tanuki skeleton, various other minor file fixes
+By: Jenny
