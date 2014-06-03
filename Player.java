@@ -5,7 +5,7 @@ public class Player {
     String _name;
     Level _level;
     int _health;
-    int _mochi;
+    ItemQueue items;
 
     public Player( Level lvl ) {
 	_name = "Kia"; //shoutout to the bae
@@ -17,6 +17,7 @@ public class Player {
 	 * from the middle.
 	 **********/
 	_health = 100;
+	item = new ItemQueue();
     }
 
     public Player( String name ) {
@@ -42,8 +43,15 @@ public class Player {
 
     //don't worry about it! elaborate on queue of items?
 
-    public void addMochi(int x) {
-	_mochi = _mochi + x;
+    public void obtainItem(String s){
+	items.enqueue(s);
+    }
+    public String peekItem() {
+	return items.peekFront();
+    }
+
+    public String useItem() {
+	items.dequeue;
     }
 
 }
