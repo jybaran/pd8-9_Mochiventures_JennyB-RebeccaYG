@@ -2,24 +2,15 @@ import java.io.*;
 import java.util.*;
 
 public class Item {
-    
-    private String cargo;
-    private Item next;
+    int health;
+    String name;
 
-    public Item(String s, Item n){
-	cargo = s;
-	next = n;
+    public Item(){
+	health = 0;
+	name = "generic name";
     }
 
-    public String getCargo() { return cargo; }
-    public Item getNext() { return next; }
-
-    public void setCargo( String newCargo ) {
-	cargo = newCargo;
+    public String toString(){
+	return name;
     }
-    
-    public void setNext(Item n) {
-	next = n;
-    }
-    
 }
