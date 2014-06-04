@@ -43,7 +43,6 @@ public class Tanuki {
 	System.out.println( teddy.getAnswer() );
 	System.out.println( teddy.isCorrect("fox") );
 	System.out.println( teddy.isCorrect("bear") );
-	System.out.println( teddy.isCorrect("LITERAL DONKEY BALLS.") );
     }
 
 }
