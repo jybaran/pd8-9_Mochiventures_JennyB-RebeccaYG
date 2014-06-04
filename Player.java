@@ -43,14 +43,14 @@ public class Player {
     //don't worry about it! elaborate on queue of items?
 
     public void obtainItem(String s){
-	iQ.enqueue(s);
+	_iQ.enqueue(s);
     }
     public String peekItem() {
-	return iQ.peekFront();
+	return _iQ.peekFront();
     }
 
     public String useItem() {
-	return iQ.dequeue();
+	return _iQ.dequeue();
     }
 
     public void obtainMochi( int i ) {

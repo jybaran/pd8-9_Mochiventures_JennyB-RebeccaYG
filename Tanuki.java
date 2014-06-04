@@ -7,7 +7,7 @@ public class Tanuki {
     String _answer;
 
     public boolean isCorrect( String ans ) {
-	return ans = _answer;
+	return ans.equals(_answer);
     }
 
 }

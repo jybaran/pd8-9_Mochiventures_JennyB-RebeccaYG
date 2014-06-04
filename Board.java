@@ -10,7 +10,7 @@ public class Board {
     //always want to have a somewhat balanced board
     
     public Board() {
-	_root = null
+	_root = null;
 	_size = 0;
 	_rightSize = 0;
 	_leftSize = 0;
