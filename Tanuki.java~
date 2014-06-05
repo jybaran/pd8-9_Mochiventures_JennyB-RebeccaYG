@@ -22,8 +22,8 @@ public class Tanuki {
 	    _question = splitString[0];
 	    _answer = splitString[1];
 	}
-	catch (Exception e) 
-	    System.out.println("File not found, you are a failure and should feel bad.");
+	catch (Exception e) {
+	    System.out.println("File not found, you are a failure nd should feel bad.");
 	    _question = "WHAT IS THE AIRSPEED VELOCITY OF AN UNLADEN SWALLOW?";
 	    _answer = "LITERAL DONKEY BALLS.";
 	}

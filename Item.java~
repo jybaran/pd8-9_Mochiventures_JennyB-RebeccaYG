@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+public class Item {
+    String _name;
+    String _response;
+    int _healthEffect;
+
+    public Item( String filename ) {
+	String[] splitString = new String[3]; //change if more data
+	int count = 0;
+	try {
+	    Scanner sc = new Scanner( new File( filename ) );
+	    while ( sc.hasNext() ) {
+		splitString[count] = sc.nextLine();
+		count++;
+	    }
+
+	    _name = splitString[0];
+	    _response = splitString[1];
+	    _healthEffect = splitString[2];
+	}
+    }
+
+    public String getName(){
+	return _name;
+    }
+}

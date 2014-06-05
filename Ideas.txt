@@ -20,3 +20,6 @@ Assorted:
 -“You check the vending machine & find [item]”
 -shinkansen (“whoosh whoosh you are traveling at 800 mph” escape from tanuki)
 -“balls to you!” tanuki punches you in face with balls if you run
+-queue stores items you get (items linked to levels), you can access them for health boost but you don’t know whether +/-
+-obtainMochi()
+-randqueue reads in file of level filenames
