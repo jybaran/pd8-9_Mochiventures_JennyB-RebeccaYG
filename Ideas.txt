@@ -1,0 +1,22 @@
+Levels:
+-Penguin Bar
+-pachinko parlor
+-Takeshita-dori
+-temple (forest one)
+-shrine (gates)
+-miyako odori
+
+Items:
+-apple lemonade pizza drink (-h)
+-giant lollipop (-h)
+-baby star (+h)
+-grape jelly drink (+h)
+-onigiri (+h)
+-incense (+h)
+-good luck charm (+h)
+-sake (-h)
+
+Assorted:
+-“You check the vending machine & find [item]”
+-shinkansen (“whoosh whoosh you are traveling at 800 mph” escape from tanuki)
+-“balls to you!” tanuki punches you in face with balls if you run
