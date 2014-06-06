@@ -51,4 +51,7 @@ public class Player {
 	_mochi -= i;
     }
 
+    public void adjustHealth( int i ) {
+	_health += i;
+    }
 }

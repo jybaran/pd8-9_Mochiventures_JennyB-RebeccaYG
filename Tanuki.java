@@ -3,10 +3,11 @@ import java.util.*;
 
 public class Tanuki {
 
-    String _question;
-    String _answer;
-    int _mochiTax;
-
+    private String _question;
+    private String _answer;
+    private int _mochiTax;
+    private int _healthEffect; //MUST BE NEGATIVE
+    
     public Tanuki( String filename ) {
 	_mochiTax = (int)( Math.random() * 5 ) + 1;
 	
@@ -18,11 +19,11 @@ public class Tanuki {
 		splitString[count] = sc.nextLine();
 		count++;
 	    }
-
+	    
 	    _question = splitString[0];
 	    _answer = splitString[1];
 	}
-	catch (Exception e) 
+	catch (Exception e) { 
 	    System.out.println("File not found, you are a failure and should feel bad.");
 	    _question = "WHAT IS THE AIRSPEED VELOCITY OF AN UNLADEN SWALLOW?";
 	    _answer = "LITERAL DONKEY BALLS.";
@@ -32,7 +33,7 @@ public class Tanuki {
     public String getQuestion() {
 	return _question;
     }
-
+    
     public String getAnswer() { //for testing purposes only
 	return _answer;
     }
@@ -41,6 +42,10 @@ public class Tanuki {
 	return _mochiTax;
     }
 
+    public int getHEffect() {
+	return _healthEffect;
+    }
+    
     public boolean isCorrect( String ans ) {
 	return ans.equals(_answer);
     }

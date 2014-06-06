@@ -24,11 +24,10 @@ public class Board {
 	    Level temp = _root;
 
 	    while ( temp.getLChild() != null ) {
-		temp = temp.getLChild(); // goes to the last element 
+		temp = temp.getLChild(); //goes to the last element
 	    }
 	    
 	    temp.setLChild(lev);		
-	    lev.setParent(temp);
 	    _leftSize++;
 	}
 	else {
@@ -39,28 +38,23 @@ public class Board {
 	    }
 	    
 	    temp.setRChild(lev);		
-	    lev.setParent(temp);
 	    _rightSize++;
 	}
 	_size++;
     }	    
 
-    public void levelUpLeft() {//moving to the next level
-	Level temp = _root.getLChild();
-	temp.visit();
-	temp.setRChild( _root.getRChild() );
-	_root.getRChild().setParent(temp);
-	temp.setParent(null);
-	_root = temp;
+    public Level levelUpLeft() {//moving to the next level
+	Level newLevel = _root.getLChild();
+	newLevel.setRChild( _root.getRChild() );
+	_root = newLevel;
+	return newLevel;
     }
 
     public void levelUpRight() {//moving to the next level;
-	Level temp = _root.getRChild();
-	temp.visit();
-	temp.setLChild( _root.getLChild() );
-	_root.getLChild().setParent(temp);
-	temp.setParent(null);
-	_root = temp;
+	Level newLevel = _root.getRChild();
+	newLevel.setLChild( _root.getLChild() );
+	_root = newLevel;
+	return newLevel;
     }
 	    
 }
