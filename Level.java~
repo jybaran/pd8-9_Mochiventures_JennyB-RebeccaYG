@@ -29,9 +29,9 @@ public class Level {
 	    _description = splitString[1];
 	}
 	catch (Exception e) {
-	    System.out.println("FILE NOT FOUND, YOU ARE A FAILURE AND SHOULD FEEL BAD.");
+	    System.out.println("File not found, you are a failure and should feel bad.");
 	    _name = "307";
-	    _description = "THE CS SEMIFORMAL IS IN FULL SWING BUT YOU DIDN'T PAY YOUR DUES SO THE DRINKS SHERIFF GIVES YOU DIRTY LOOKS INSTEAD OF CIDER.";
+	    _description = "The CS Semiformal is in full swing but you didn't pay your dues so the drinks sheriff gives you dirty looks instead of cider.";
 	}
     }
 
