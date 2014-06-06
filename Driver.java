@@ -15,7 +15,7 @@ public class Driver {
 	Player _player = new Player(name);
 	Board _board = new Board();
 
-	String[] lvlNames = new String[]; //ah shit gotta make it a queue
+	String[] lvlNames = new String[]; //ah shit gotta make it a randqueue
 	int count = 0;
 
 	//gotta make this read in file of filenames!
