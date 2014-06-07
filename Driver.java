@@ -1,9 +1,10 @@
 import java.io.*;
 import java.util.*;
+import RandQ.*;
 
 public class Driver {
 
-    Tanuki _opponent;
+    private Tanuki _opponent;
 
     public static void main (String[] args) {
 	Scanner sc = new Scanner(System.in);
@@ -15,25 +16,52 @@ public class Driver {
 	Player _player = new Player(name);
 	Board _board = new Board();
 
-	String[] lvlNames = new String[]; //ah shit gotta make it a randqueue
+	//reads in file of lvl filenames, makes randq
+	RQueue<String> lvlNames = new RQueue<String>;
 	int count = 0;
 
-	//gotta make this read in file of filenames!
 	try {
-	    Scanner sc = new Scanner( new File("LevelNames.txt") );
-	    while ( sc.hasNext() ) {
-		lvlNames[count] = sc.nextLine() + ".txt";
+	    Scanner lvlsc = new Scanner( new File("LevelNames.txt") );
+	    while ( lvlsc.hasNext() ) {
+		lvlNames.enQueue( lvlsc.nextLine() + ".txt" );
 	    }
 	}
 	catch (Exception e) {
 	    System.out.println("FILE NOT FOUND, YOU ARE A FAILURE AND SHOULD FEEL BAD.");
 	}
 
-	for ( String lvlnm : lvlNames ) {
-	    _board.add( new Level(lvlnm) );
+	//reads in file of tanuki filenames, makes randq
+	RQueue<String> tanFiles = new RQueue<String>;
+	int count = 0;
+
+	try {
+	    Scanner tansc = new Scanner( new File("TanukiFiles.txt") );
+	    while ( tansc.hasNExt() ) {
+		tanFiles.enQueue( tansc.nextLine() + ".txt" );
+	    }
+	}
+	catch (Exception e) {
+	    System.out.println("FILE NOT FOUND, YOU ARE A FAILURE AND SHOULD FEEL BAD.");
 	}
 
-	//when leveling up, _player.setlevel( board.lvlupr/l() ) 
+	int tanLeft = 5; //number of tanuki to spaw in entire game
+
+	while ( ! lvlName.isEmpty() ) {
+	    int rand = (int)(Math.random() * 10 );
+	    //10% chance of getting a tanuki in any given level
+	    /*something about how this biases you towards getting
+	      tanuki in earlier levels??? will fix later*/
+	    if ( rand == 0 && tanLeft != 0 ) {
+		String tanString = tanFiles.dequeue(); //get tanuki string
+		_board.add( new Level( lvlNames.dequeue(), tanString ) );
+		tanLeft--;
+	    }
+	    else {
+		_board.add( new Level( lvlNames.dequeue() ) );
+	    }
+	}
+
+	//when leveling up, _player.setlevel( _board.lvlupr/l() ) 
 
 	//if ( _player.getlevel().hastanuki() )
 	//    _opponent = _player.getlevel().gettanuki()

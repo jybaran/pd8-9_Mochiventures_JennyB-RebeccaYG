@@ -96,3 +96,9 @@ By: Jenny & Keka
 Date: 2014-06-06
 Time: 14:30
 Things Done: Set up Driver to read file of lvl filenames, put in array. Needs to be in randQueue instead, yoinked randQueue & related classes from basement. Credit to Mr. Brown. (Getting rid of main methods & extraneous comments for readability’s sake.)
+By: Jenny
+
+Date: 2014-06-06
+Time: 23:00
+Things Done: More work in Driver. randQs to take lvl & tanuki filenames & put them in board/lvl as needed.
+By: Jenny
