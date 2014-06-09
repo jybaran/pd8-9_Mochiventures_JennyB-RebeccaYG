@@ -3,10 +3,10 @@ import java.util.*;
 import RandQ.*;
 
 public class Driver {
-
-    private Tanuki _opponent;
-
+    
     public static void main (String[] args) {
+	private Tanuki _opponent; //basically a pointer
+
 	Scanner sc = new Scanner(System.in);
 
 	System.out.println("Hello! Welcome to Mochiventures");
@@ -44,8 +44,9 @@ public class Driver {
 	    System.out.println("FILE NOT FOUND, YOU ARE A FAILURE AND SHOULD FEEL BAD.");
 	}
 
-	int tanLeft = 5; //number of tanuki to spaw in entire game
+	int tanLeft = tanFiles.getSize(); //# of tanuki to spawn over all lvls
 
+	//building board from rqueue of lvls
 	while ( ! lvlName.isEmpty() ) {
 	    int rand = (int)(Math.random() * 10 );
 	    //10% chance of getting a tanuki in any given level

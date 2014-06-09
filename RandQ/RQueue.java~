@@ -53,11 +53,7 @@ public class RQueue<T> implements Queue<T> {
 	    enqueue( dequeue() );
     }
 
-    public boolean isEmpty() { return _front == null; }
-
-    public int getSize() { 
-	return _size;
-    }
+    public boolean isEmpty() { return _front == null; }//O(1)
 
     public String toString() { 
 	String foo = "";
