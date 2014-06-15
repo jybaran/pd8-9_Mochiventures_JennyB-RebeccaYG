@@ -40,7 +40,7 @@ public class Driver {
 
 	//building board from rqueue of lvls
 	while ( ! lvlName.isEmpty() ) {
-	    int rand = (int)(Math.random() * 10 );
+	    int rand = (int)(Math.random() * 2 );
 	    //10% chance of getting a tanuki in any given level
 	    /*something about how this biases you towards getting
 	      tanuki in earlier levels??? will fix later*/
@@ -103,7 +103,19 @@ public class Driver {
 
 	Player _player = new Player( name, _board.getRoot() );
 	Board _board = new Board();
-	Tanuki _opponent; //basically a pointer
+	int lvlcount = 0; //determines how much mochi you can get in a lvl 
+	Tanuki _opponent; //basically a pointer i guess??
+
+	while ( (_player.getHealth() != 0) && ( _board.getSize() > 0 ) ) {
+	    int randmochi = (int)(Math.
+	    String lvltxt = "Welcome to " _player.getLevel().getName() + "!\n";
+	    lvltxt += _player.getLevel().getDescription() + "\n";
+	    lvltxt += "You find " 
+
+	    if ( _player.getLevel().hasTanuki() ) {
+
+	    }
+	}
 	
 	//when leveling up, _player.setlevel( _board.lvlupr/l() ) 
 

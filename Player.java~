@@ -20,10 +20,6 @@ public class Player {
 	_name = name;
     }
 
-    public Level getLevel() {
-	return _level;
-    }
-
     //for leveling up, we run this w/ next level (left or right child of prev)
     public void setLevel( Level lvl ) {
 	_level = lvl;

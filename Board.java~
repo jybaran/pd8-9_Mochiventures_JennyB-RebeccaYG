@@ -60,9 +60,5 @@ public class Board {
     public Level getRoot() {
 	return _root;
     }
-
-    public int getSize() {
-	return _size;
-    }
 	    
 }
