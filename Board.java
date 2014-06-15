@@ -56,5 +56,9 @@ public class Board {
 	_root = newLevel;
 	return newLevel;
     }
+
+    public Level getRoot() {
+	return _root;
+    }
 	    
 }

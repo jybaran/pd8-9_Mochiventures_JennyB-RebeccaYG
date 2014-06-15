@@ -3,19 +3,11 @@ import java.util.*;
 import RandQ.*;
 
 public class Driver {
-    
+
     public static void main (String[] args) {
-	private Tanuki _opponent; //basically a pointer
-
-	Scanner sc = new Scanner(System.in);
-
-	System.out.println("Hello! Welcome to Mochiventures");
-	System.out.println("What is your name?");
-	String name = sc.next();
-	
-	Player _player = new Player(name);
-	Board _board = new Board();
-
+	*/**********
+	  * SETTING UP BOARD W/ LVLS, LVLS W/ TANUKI
+	  **********/
 	//reads in file of lvl filenames, makes randq
 	RQueue<String> lvlNames = new RQueue<String>;
 	int count = 0;
@@ -36,7 +28,7 @@ public class Driver {
 
 	try {
 	    Scanner tansc = new Scanner( new File("TanukiFiles.txt") );
-	    while ( tansc.hasNExt() ) {
+	    while ( tansc.hasNext() ) {
 		tanFiles.enQueue( tansc.nextLine() + ".txt" );
 	    }
 	}
@@ -61,7 +53,58 @@ public class Driver {
 		_board.add( new Level( lvlNames.dequeue() ) );
 	    }
 	}
+	//end board/lvl setup
 
+	/**********
+	 * ACTUAL GAMEPLAY STUFF
+	 **********/
+	InputStreamReader isr = new InputStreamReader( System.in );
+	BufferedReader in = new BufferedReader(isr); //these read user input
+	String s; //this is where text to print goes
+	String input = "1"; //by default backup choice is first choice
+	
+	s = "\n\nHello! Welcome to Mochiventures!\n";
+	s += "Would you like to read the rules before you begin?\n";
+	s += "\t1: Sure.\n2: No thanks, let's play!\n";
+	System.out.print(s);
+	
+	//play or rules?
+
+	try {
+	    input = in.readLine();
+	}
+	catch (IOException e) { }
+	
+	if ( !( input.equals("1") ) && !( input.equals("2") ) ) {
+	    input = "1";
+	} //if user inputs something invalid
+	
+	int inst = Integer.parseInt( input );
+
+	if ( inst = 1 ) {
+	    try {
+		Scanner rc = new Scanner( new File("Rules.txt") );
+		String rules = "";
+		while ( rc.hasNext() ) {
+		    rules += rc.nextLine() + "\n";
+		}
+	    }
+	    else {
+		rules = "RULES AND STUFF.";
+	    }
+	    System.out.println(rules);
+	    System.out.println("Now, what is your name?");
+	    String name = sc.next();
+	}
+	else {
+	    System.out.println("What is your name?");
+	    String name = sc.next();
+	}
+
+	Player _player = new Player( name, _board.getRoot() );
+	Board _board = new Board();
+	Tanuki _opponent; //basically a pointer
+	
 	//when leveling up, _player.setlevel( _board.lvlupr/l() ) 
 
 	//if ( _player.getlevel().hastanuki() )
