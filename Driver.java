@@ -5,11 +5,11 @@ import RandQ.*;
 public class Driver {
 
     public static void main (String[] args) {
-	*/**********
+	/**********
 	  * SETTING UP BOARD W/ LVLS, LVLS W/ TANUKI
 	  **********/
 	//reads in file of lvl filenames, makes randq
-	RQueue<String> lvlNames = new RQueue<String>;
+	RQueue<String> lvlNames = new RQueue<String>();
 	int count = 0;
 
 	try {
@@ -23,7 +23,7 @@ public class Driver {
 	}
 
 	//reads in file of tanuki filenames, makes randq
-	RQueue<String> tanFiles = new RQueue<String>;
+	RQueue<String> tanFiles = new RQueue<String>();
 	int count = 0;
 
 	try {
@@ -89,7 +89,7 @@ public class Driver {
 		    rules += rc.nextLine() + "\n";
 		}
 	    }
-	    else {
+	    catch (IOException e ) {
 		rules = "RULES AND STUFF.";
 	    }
 	    System.out.println(rules);
@@ -107,10 +107,10 @@ public class Driver {
 	Tanuki _opponent; //basically a pointer i guess??
 
 	while ( (_player.getHealth() != 0) && ( _board.getSize() > 0 ) ) {
-	    int randmochi = (int)(Math.
-	    String lvltxt = "Welcome to " _player.getLevel().getName() + "!\n";
+	    int randmochi = (int)( Math.random() * lvlcount ) + 1;
+	    String lvltxt = "Welcome to " + _player.getLevel().getName() + "!\n";
 	    lvltxt += _player.getLevel().getDescription() + "\n";
-	    lvltxt += "You find " 
+	    lvltxt += "You find " + randmochi + " pieces of mochi.";
 
 	    if ( _player.getLevel().hasTanuki() ) {
 

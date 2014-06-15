@@ -4,14 +4,14 @@
  * (Local version, to override built-in Java implementation.)
  ******************************************************/
 
-public interface Queue<Quasar> {
+public interface Queue<T> {
 
-    public Quasar dequeue();
+    public T dequeue();
 
-    public void enqueue( Quasar x );
+    public void enqueue( T x );
 
     public boolean isEmpty();
 
-    public Quasar peekFront();
+    public T peekFront();
 
 }//end interface Queue
