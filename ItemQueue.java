@@ -11,9 +11,9 @@ public class ItemQueue {
 
     public void enqueue( Item i ){
 	if ( isEmpty () ) {
-	    _front = _end = new Node(i, null);
+	    _front = _end = new Node(i);
 	} else {
-	    _end.setNext( new Node(i, null) );
+	    _end.setNext( new Node(i) );
 	    _end = _end.getNext();
 	}
 	_size ++;

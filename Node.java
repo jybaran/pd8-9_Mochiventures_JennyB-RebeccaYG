@@ -3,18 +3,19 @@ import java.util.*;
 
 public class Node {
     
-    private String cargo;
+    private Item cargo;
     private Node next;
 
-    public Node(String s, Node n){
-	cargo = s;
-	next = n;
+    public Node(Item i){
+	cargo = i;
+	next = null;
     }
 
-    public String getCargo() { return cargo; }
+    public Item getCargo() { return cargo; }
+
     public Node getNext() { return next; }
 
-    public void setCargo( String newCargo ) {
+    public void setCargo( Item newCargo ) {
 	cargo = newCargo;
     }
     

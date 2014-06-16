@@ -57,6 +57,16 @@ public class Driver {
 		_board.add( new Level( lvlNames.dequeue() ) );
 	    }
 	}
+
+	RQueue<String> itemFiles = new RQueue<String>();
+	try {
+	    Scanner filesc = new Scanner ( new File ("Items/Items.txt") ) ;
+	    while (filesc.hasNext() ) {
+		itemFiles.enqueue("Items/" + filesc.nextLine() + ".txt" );
+	    } 
+	} catch (Exception e) {
+	    System.out.println("FILE NOT FOUND, YOU ARE A FAILURE AND SHOULD FEEL BAD" );
+	}
 	//end board/lvl setup
 
 	/**********
@@ -119,12 +129,16 @@ public class Driver {
 	Player _player = new Player( name, _board.getRoot() );
 	int lvlcount = 0; //determines how much mochi you can get in a lvl 
 	Tanuki _opponent; //basically a pointer i guess??
+	Level currentLvl = _player.getLevel();
+	ItemQueue iQ = new ItemQueue();
 
-	while ( (_player.getHealth() != 0) && ( lvlcount < numLvls ) ) {
+
+	while ( (_player.getHealth() != 0) && ( lvlcount < numLvls ) && (currentLvl != null)) {
 	    lvlcount++;
-	    Level currentLvl = _player.getLevel();
+	    currentLvl = _player.getLevel();
 	    int randmochi = (int)( Math.random() * lvlcount ) + 1;
 	    
+	    //mochi
 	    String lvltxt = "\n\nWelcome to " + currentLvl.getName() + "!\n";
 	    lvltxt += currentLvl.getDescription() + "\n";
 	    lvltxt += "\nYou found " + randmochi + " piece(s) of mochi!";
@@ -132,6 +146,34 @@ public class Driver {
 
 	    System.out.println(lvltxt);
 
+	    //items
+	    Random r = new Random();
+	    int rand = r.nextInt(10);
+	    String itemtxt = "";
+	    if (rand < 7 && itemFiles.peekFront() != null){ // you will get an item
+		String nextItem = itemFiles.dequeue();
+		Item item = new Item(nextItem);
+		itemtxt += "\nYou have found a new item, " + item.getName();
+		itemtxt += "\nWhat would you like to do with it?";
+		itemtxt += "\n\t1: Use it now";
+		itemtxt += "\n\t2: Save it for later";
+		System.out.println(itemtxt);
+		try {
+		    input = in.readLine();
+		} catch (IOException e) { }
+		
+		if ( !(input.equals("1")) && !(input.equals("2"))){
+		    input = "1";
+		} else if (input.equals("1")){
+		    System.out.println(item.getResponse());
+		    System.out.println("You have gained " + item.getEffect() + " health points");
+		} else {
+		    System.out.println("Your item has been saved for later!");
+		    iQ.enqueue(item);
+		}
+	    }
+	    
+	    //tanuki
 	    if ( currentLvl.hasTanuki() ) {
 		_opponent = currentLvl.getTanuki();
 		int numMochi = _opponent.getMTax();
@@ -190,8 +232,17 @@ public class Driver {
 	    }
 
 	    lvltxt = "Ready to move on? Pick where to go next!";
-	    lvltxt += "\n\t1: " + currentLvl.getLChild().getName();
-	    lvltxt += "\n\t2: " + currentLvl.getRChild().getName();
+	    if ( currentLvl.getLChild() == null && currentLvl.getRChild() == null){
+		lvltxt = "You have completed all the levels!";
+		return;
+	    } else if (currentLvl.getLChild() == null){
+		lvltxt += "\n\t2: " + currentLvl.getRChild().getName();
+	    } else if (currentLvl.getRChild() == null){
+		lvltxt += "\n\t1: " + currentLvl.getLChild().getName();
+	    } else {
+		lvltxt += "\n\t1: " + currentLvl.getLChild().getName();
+		lvltxt += "\n\t2: " + currentLvl.getRChild().getName();
+	    }
 	    System.out.println(lvltxt);
 	    
 	    try {
