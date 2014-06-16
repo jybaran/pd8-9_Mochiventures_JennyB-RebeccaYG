@@ -21,6 +21,7 @@ public class Level {
 	String[] splitString = new String[2]; //change if more data
 	try {
 	    Scanner sc = new Scanner( new File( filename ) );
+	    int count = 0;
 	    while ( sc.hasNext() ) {
 		splitString[count] = sc.nextLine();
 		count++;

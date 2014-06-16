@@ -50,7 +50,7 @@ public class Board {
 	return newLevel;
     }
 
-    public void levelUpRight() {//moving to the next level;
+    public Level levelUpRight() {//moving to the next level;
 	Level newLevel = _root.getRChild();
 	newLevel.setLChild( _root.getLChild() );
 	_root = newLevel;

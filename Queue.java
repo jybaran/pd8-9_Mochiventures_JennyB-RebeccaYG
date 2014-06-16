@@ -1,43 +1,17 @@
-import java.io.*;
-import java.util.*;
+/*****************************************************
+ * interface Queue
+ * Includes only methods listed in AP subset of Java
+ * (Local version, to override built-in Java implementation.)
+ ******************************************************/
 
-public class Queue {
-    private Node _front, _end;
-    private int _size;
+public interface Queue<T> {
 
-    public Queue() {
-	_front = _end = null;
-    }
+    public T dequeue();
 
-    public void enqueue(String s){
-	if ( isEmpty () ) {
-	    _front = _end = new Node(s, null);
-	} else {
-	    _end.setNext( new Node(s, null) );
-	    _end = _end.getNext();
-	}
-	_size ++;
-    }
+    public void enqueue( T x );
 
-	   
-    public String dequeue() {
-	String result = _front.getCargo();
-	_front = _front.getNext();
+    public boolean isEmpty();
 
-	if ( _front == null ) //last position
-	    _end = null;
+    public T peekFront();
 
-	_size --;
-	return result;
-    }
-
-    public String peekFront() {
-	return _front.getCargo();
-    }
-    
-   
-    public boolean isEmpty() {
-	return ( _size == 0 );
-    }
-    
-}
+}//end interface Queue

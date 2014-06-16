@@ -29,8 +29,8 @@ public class Player {
 	_level = lvl;
     }
 
-    public void obtainItem(String s){
-	_iQ.enqueue(s);
+    public void obtainItem(Item i){
+	_iQ.enqueue(i);
     }
 
     public String peekItem() {
@@ -39,9 +39,10 @@ public class Player {
     }
 
     public String useItem() {
-	Item accessed = iQ.dequeue();
+	Item accessed = _iQ.dequeue();
 	String retStr = accessed.getResponse();
 	_health += accessed.getEffect();
+	return retStr;
     }
 
     public void obtainMochi( int i ) {
@@ -57,5 +58,9 @@ public class Player {
 
     public void adjustHealth( int i ) {
 	_health += i;
+    }
+
+    public int getHealth() {
+	return _health;
     }
 }

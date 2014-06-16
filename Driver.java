@@ -1,21 +1,22 @@
 import java.io.*;
 import java.util.*;
-import RandQ.*;
+//import RandQ.*;
 
 public class Driver {
 
     public static void main (String[] args) {
+	Board _board = new Board();
+
 	/**********
 	  * SETTING UP BOARD W/ LVLS, LVLS W/ TANUKI
 	  **********/
 	//reads in file of lvl filenames, makes randq
 	RQueue<String> lvlNames = new RQueue<String>();
-	int count = 0;
 
 	try {
 	    Scanner lvlsc = new Scanner( new File("LevelNames.txt") );
 	    while ( lvlsc.hasNext() ) {
-		lvlNames.enQueue( lvlsc.nextLine() + ".txt" );
+		lvlNames.enqueue( lvlsc.nextLine() + ".txt" );
 	    }
 	}
 	catch (Exception e) {
@@ -24,12 +25,11 @@ public class Driver {
 
 	//reads in file of tanuki filenames, makes randq
 	RQueue<String> tanFiles = new RQueue<String>();
-	int count = 0;
 
 	try {
 	    Scanner tansc = new Scanner( new File("TanukiFiles.txt") );
 	    while ( tansc.hasNext() ) {
-		tanFiles.enQueue( tansc.nextLine() + ".txt" );
+		tanFiles.enqueue( tansc.nextLine() + ".txt" );
 	    }
 	}
 	catch (Exception e) {
@@ -39,7 +39,7 @@ public class Driver {
 	int tanLeft = tanFiles.getSize(); //# of tanuki to spawn over all lvls
 
 	//building board from rqueue of lvls
-	while ( ! lvlName.isEmpty() ) {
+	while ( ! lvlNames.isEmpty() ) {
 	    int rand = (int)(Math.random() * 2 );
 	    //10% chance of getting a tanuki in any given level
 	    /*something about how this biases you towards getting
@@ -80,37 +80,49 @@ public class Driver {
 	} //if user inputs something invalid
 	
 	int inst = Integer.parseInt( input );
+	String name = "";
 
-	if ( inst = 1 ) {
+	if ( inst == 1 ) {
+		String rules = "";
 	    try {
 		Scanner rc = new Scanner( new File("Rules.txt") );
-		String rules = "";
 		while ( rc.hasNext() ) {
 		    rules += rc.nextLine() + "\n";
 		}
 	    }
-	    catch (IOException e ) {
+	    catch ( IOException e ) {
 		rules = "RULES AND STUFF.";
 	    }
 	    System.out.println(rules);
 	    System.out.println("Now, what is your name?");
-	    String name = sc.next();
+	    try {
+		name = in.readLine();
+	    }
+	    catch (IOException e) {
+		name = "Kia";
+	    }
 	}
 	else {
 	    System.out.println("What is your name?");
-	    String name = sc.next();
+	    try {
+		name = in.readLine();
+	    }
+	    catch (IOException e) {
+		name = "Kia";
+	    }
 	}
 
 	Player _player = new Player( name, _board.getRoot() );
-	Board _board = new Board();
 	int lvlcount = 0; //determines how much mochi you can get in a lvl 
 	Tanuki _opponent; //basically a pointer i guess??
 
 	while ( (_player.getHealth() != 0) && ( _board.getSize() > 0 ) ) {
+	    lvlcount++;
 	    int randmochi = (int)( Math.random() * lvlcount ) + 1;
 	    String lvltxt = "Welcome to " + _player.getLevel().getName() + "!\n";
 	    lvltxt += _player.getLevel().getDescription() + "\n";
-	    lvltxt += "You find " + randmochi + " pieces of mochi.";
+	    lvltxt += "You found " + randmochi + " pieces of mochi!";
+	    _player.obtainMochi(randmochi);
 
 	    if ( _player.getLevel().hasTanuki() ) {
 

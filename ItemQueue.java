@@ -9,19 +9,19 @@ public class ItemQueue {
 	_front = _end = null;
     }
 
-    public void enqueue(String s){
+    public void enqueue( Item i ){
 	if ( isEmpty () ) {
-	    _front = _end = new Node(s, null);
+	    _front = _end = new Node(i, null);
 	} else {
-	    _end.setNext( new Node(s, null) );
+	    _end.setNext( new Node(i, null) );
 	    _end = _end.getNext();
 	}
 	_size ++;
     }
 
 	   
-    public String dequeue() {
-	String result = _front.getCargo();
+    public Item dequeue() {
+	Item result = _front.getCargo();
 	_front = _front.getNext();
 
 	if ( _front == null ) //last position
@@ -31,7 +31,7 @@ public class ItemQueue {
 	return result;
     }
 
-    public String peekFront() {
+    public Item peekFront() {
 	return _front.getCargo();
     }
     
