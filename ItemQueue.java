@@ -39,5 +39,9 @@ public class ItemQueue {
     public boolean isEmpty() {
 	return ( _size == 0 );
     }
+
+    public int getSize() {
+	return _size;
+    }
     
 }

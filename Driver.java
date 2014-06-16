@@ -167,6 +167,7 @@ public class Driver {
 		} else if (input.equals("1")){
 		    System.out.println(item.getResponse());
 		    System.out.println("You have gained " + item.getEffect() + " health points");
+		    _player.adjustHealth( item.getEffect() );
 		} else {
 		    System.out.println("Your item has been saved for later!");
 		    iQ.enqueue(item);
@@ -231,6 +232,21 @@ public class Driver {
 		}
 	    }
 
+	    if ( iQ.getSize() > 0) {
+		System.out.println("You're getting pretty hungry, would you like to use one of your items? (Type yes or no)");
+		try {
+		    input = in.readLine();
+		} catch (IOException e ) { }
+		if (input.equals("yes")) {
+		    System.out.println("Good choice!");
+		    Item temp = iQ.dequeue();
+		    System.out.println("Your next item is" + temp.getName() );
+		    System.out.println(temp.getResponse());
+		    System.out.println("You have gained " + temp.getEffect() + " health points");
+		    _player.adjustHealth( temp.getEffect() );
+		}
+	    }
+   
 	    lvltxt = "Ready to move on? Pick where to go next!";
 	    if ( currentLvl.getLChild() == null && currentLvl.getRChild() == null){
 		lvltxt = "You have completed all the levels!";
