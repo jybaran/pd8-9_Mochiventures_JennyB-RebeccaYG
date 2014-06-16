@@ -1,4 +1,6 @@
 pd8-9_Mochiventures_JennyB-RebeccaYG
 ====================================
 
-Final Project 2nd Term Junior Year
+Welcome to Mochiventures, your own personal tour through Japan. Here you will encounter delicious food, beautiful sites and frightening Tanuki. 
+
+To begin playing, simply compile and run the Driver file! The rules of the game are there :)
