@@ -6,6 +6,7 @@ public class Driver {
 
     public static void main (String[] args) {
 	Board _board = new Board();
+	int numLvls = 0;
 
 	/**********
 	  * SETTING UP BOARD W/ LVLS, LVLS W/ TANUKI
@@ -22,6 +23,7 @@ public class Driver {
 	catch (Exception e) {
 	    System.out.println("FILE NOT FOUND, YOU ARE A FAILURE AND SHOULD FEEL BAD.");
 	}
+	lvlNames.sample();
 
 	//reads in file of tanuki filenames, makes randq
 	RQueue<String> tanFiles = new RQueue<String>();
@@ -35,9 +37,11 @@ public class Driver {
 	catch (Exception e) {
 	    System.out.println("FILE NOT FOUND, YOU ARE A FAILURE AND SHOULD FEEL BAD.");
 	}
+	tanFiles.sample();
 
 	int tanLeft = tanFiles.getSize(); //# of tanuki to spawn over all lvls
 
+	numLvls = lvlNames.getSize();
 	//building board from rqueue of lvls
 	while ( ! lvlNames.isEmpty() ) {
 	    int rand = (int)(Math.random() * 2 );
@@ -116,66 +120,99 @@ public class Driver {
 	int lvlcount = 0; //determines how much mochi you can get in a lvl 
 	Tanuki _opponent; //basically a pointer i guess??
 
-	while ( (_player.getHealth() != 0) && ( _board.getSize() > 0 ) ) {
+	while ( (_player.getHealth() != 0) && ( lvlcount < numLvls ) ) {
 	    lvlcount++;
 	    Level currentLvl = _player.getLevel();
 	    int randmochi = (int)( Math.random() * lvlcount ) + 1;
 	    
-	    String lvltxt = "Welcome to " + currentLvl.getName() + "!\n";
+	    String lvltxt = "\n\nWelcome to " + currentLvl.getName() + "!\n";
 	    lvltxt += currentLvl.getDescription() + "\n";
-	    lvltxt += "You found " + randmochi + " piece(s) of mochi!";
+	    lvltxt += "\nYou found " + randmochi + " piece(s) of mochi!";
 	    _player.obtainMochi(randmochi);
 
 	    System.out.println(lvltxt);
 
 	    if ( currentLvl.hasTanuki() ) {
-
-	    }
-	    else { //lvl selection
-		lvltxt = "Ready to move on? Pick where to go next!";
-		lvltxt += "\n\t1: " + currentLvl.getLChild().getName();
-		lvltxt += "\n\t1: " + currentLvl.getRChild().getName();
-		System.out.println(lvltxt);
+		_opponent = currentLvl.getTanuki();
+		int numMochi = _opponent.getMTax();
+		String tantxt = "\nOh no! You ran into a tanuki!";
+		tantxt += " The tanuki asks, \"" + _opponent.getQuestion() + "\"";
+		tantxt += "\nWhat do you want do?";
+		tantxt += "\n\t1: Give it " + numMochi + " piece(s) of mochi to leave you alone.";
+		tantxt += "\n\t2: Run away!";
+		tantxt += "\n\t3: Answer the question.";
+		System.out.println( tantxt );
 
 		try {
 		    input = in.readLine();
 		}
 		catch (IOException e) { }
 		
-		if ( !( input.equals("1") ) && !( input.equals("2") ) ) {
+		if ( !( input.equals("1") ) && !( input.equals("2") ) && !(input.equals("3") ) ) {
 		    input = "1";
 		} //if user inputs something invalid
 		
 		int choice = Integer.parseInt(input);
 		
 		if ( choice == 1 ) {
-		    _player.setLevel( _board.levelUpLeft() );
+		    _player.useMochi( numMochi );
+		    System.out.println("You give the tanuki " + numMochi + " piece(s) of mochi and it goes away.");
+		}
+		else if ( choice == 2 ) {
+		    int safe = (int)(Math.random() * 2);
+		    if ( safe == 1 ) {
+			System.out.println("You manage to get away safely.");
+		    }
+		    else {
+			_player.useMochi( numMochi );
+			System.out.println("The tanuki catches you and takes the " + numMochi + " piece(s) of mochi anyway.");
+		    }
 		}
 		else {
-		    _player.setLevel( _board.levelUpRight() );
+		    System.out.println("What is your answer?");
+		    String ans;
+		    try {
+			ans = in.readLine();
+		    }
+		    catch (IOException e) {
+			ans = "wow yr face is hella cute";
+		    }
+		    
+		    if ( _opponent.isCorrect(ans) ) {
+			_player.obtainMochi(numMochi);
+			System.out.println("Nice job! You get " + numMochi + " piece(s) of mochi, and the tanuki winks before walking away.");
+		    }
+		    else {
+			_player.useMochi(numMochi);
+			System.out.println("Aww, you were wrong. The correct answer was " + _opponent.getAnswer() + ". The tanuki takes " + numMochi + " piece(s) of mochi and shakes its head disapprovingly.");
+		    }
 		}
 	    }
-	}
-	
-	//when leveling up, _player.setlevel( _board.lvlupr/l() ) 
 
-	//if ( _player.getlevel().hastanuki() )
-	//    _opponent = _player.getlevel().gettanuki()
-	//    SOP you ran into a tanuki, what do you do
-	//    choices:
-	//        run (damages yr health)
-	//            _player.adjustHealth( _opponent.getHEffect() )
-	//        throw _opponent.getMTax() mochi
-	//            _player.useMochi( _opponent.getMTax() )
-	//        answer question
-	//            SOP _opponent.getDescription()
-	//            user input string
-	//            if _opponent.iscorrect(input)
-	//                _player.obtainMochi( _opponent.getMTax )
-	//            else
-	//                _player.useMochi( _opponent.getMTax )
-	//    level up l/r?
+	    lvltxt = "Ready to move on? Pick where to go next!";
+	    lvltxt += "\n\t1: " + currentLvl.getLChild().getName();
+	    lvltxt += "\n\t2: " + currentLvl.getRChild().getName();
+	    System.out.println(lvltxt);
+	    
+	    try {
+		input = in.readLine();
+	    }
+	    catch (IOException e) { }
+	    
+	    if ( !( input.equals("1") ) && !( input.equals("2") ) ) {
+		input = "1";
+	    } //if user inputs something invalid
+	    
+	    int choice = Integer.parseInt(input);
+	    
+	    if ( choice == 1 ) {
+		_player.setLevel( _board.levelUpLeft() );
+	    }
+	    else {
+		_player.setLevel( _board.levelUpRight() );
+	    }
+	}//end while loop
 	
-    }
+    }//end main
 
-}
+}//end Driver
