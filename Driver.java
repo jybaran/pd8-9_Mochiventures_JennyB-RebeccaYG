@@ -118,16 +118,42 @@ public class Driver {
 
 	while ( (_player.getHealth() != 0) && ( _board.getSize() > 0 ) ) {
 	    lvlcount++;
+	    Level currentLvl = _player.getLevel();
 	    int randmochi = (int)( Math.random() * lvlcount ) + 1;
-	    String lvltxt = "Welcome to " + _player.getLevel().getName() + "!\n";
-	    lvltxt += _player.getLevel().getDescription() + "\n";
-	    lvltxt += "You found " + randmochi + " pieces of mochi!";
+	    
+	    String lvltxt = "Welcome to " + currentLvl.getName() + "!\n";
+	    lvltxt += currentLvl.getDescription() + "\n";
+	    lvltxt += "You found " + randmochi + " piece(s) of mochi!";
 	    _player.obtainMochi(randmochi);
 
 	    System.out.println(lvltxt);
 
-	    if ( _player.getLevel().hasTanuki() ) {
+	    if ( currentLvl.hasTanuki() ) {
 
+	    }
+	    else { //lvl selection
+		lvltxt = "Ready to move on? Pick where to go next!";
+		lvltxt += "\n\t1: " + currentLvl.getLChild().getName();
+		lvltxt += "\n\t1: " + currentLvl.getRChild().getName();
+		System.out.println(lvltxt);
+
+		try {
+		    input = in.readLine();
+		}
+		catch (IOException e) { }
+		
+		if ( !( input.equals("1") ) && !( input.equals("2") ) ) {
+		    input = "1";
+		} //if user inputs something invalid
+		
+		int choice = Integer.parseInt(input);
+		
+		if ( choice == 1 ) {
+		    _player.setLevel( _board.levelUpLeft() );
+		}
+		else {
+		    _player.setLevel( _board.levelUpRight() );
+		}
 	    }
 	}
 	
