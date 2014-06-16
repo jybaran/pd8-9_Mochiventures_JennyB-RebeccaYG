@@ -107,3 +107,14 @@ Date: 2014-06-12
 Time: 13:50
 Things Done: cleaned up some errors, work mostly in the driver, but when i tried to push i got some crazy error i don't really know what happened
 By: Keka
+
+Date: 2014-06-16
+Time: 23:00
+Things Done: wrote all the text files for levels, tanuki, & items
+By: Keka
+
+Date: 2014-06-17
+Time: 02:15
+Things Done: finished everything after a full day of fighting to get the actual game play parts of the driver file working
+By: Jenny & Keka
+
