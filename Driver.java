@@ -150,27 +150,33 @@ public class Driver {
 	    Random r = new Random();
 	    int rand = r.nextInt(10);
 	    String itemtxt = "";
-	    if (rand < 7 && itemFiles.peekFront() != null){ // you will get an item
+	    if (rand < 7 && itemFiles.peekFront() != null) { //you get an item
 		String nextItem = itemFiles.dequeue();
 		Item item = new Item(nextItem);
 		itemtxt += "\nYou have found a new item, " + item.getName();
 		itemtxt += "\nWhat would you like to do with it?";
-		itemtxt += "\n\t1: Use it now";
-		itemtxt += "\n\t2: Save it for later";
+		itemtxt += "\n\t1: Use it now!";
+		itemtxt += "\n\t2: Save it for later.";
+		itemtxt += "\n\t3: Throw it away.";
 		System.out.println(itemtxt);
 		try {
 		    input = in.readLine();
 		} catch (IOException e) { }
 		
-		if ( !(input.equals("1")) && !(input.equals("2"))){
+		if ( !( input.equals("1") ) && !( input.equals("2") ) && !( input.equals("3") ) ){
 		    input = "1";
-		} else if (input.equals("1")){
+		}
+		else if ( input.equals("1") ) {
 		    System.out.println(item.getResponse());
 		    System.out.println("You have gained " + item.getEffect() + " health points");
 		    _player.adjustHealth( item.getEffect() );
-		} else {
+		}
+		else if ( input.equals("2") ) {
 		    System.out.println("Your item has been saved for later!");
 		    iQ.enqueue(item);
+		}
+		else {
+		    System.out.println("You discard the item.");
 		}
 	    }
 	    
@@ -240,7 +246,7 @@ public class Driver {
 		if (input.equals("yes")) {
 		    System.out.println("Good choice!");
 		    Item temp = iQ.dequeue();
-		    System.out.println("Your next item is" + temp.getName() );
+		    System.out.println("Your next item is " + temp.getName() );
 		    System.out.println(temp.getResponse());
 		    System.out.println("You have gained " + temp.getEffect() + " health points");
 		    _player.adjustHealth( temp.getEffect() );
@@ -248,14 +254,16 @@ public class Driver {
 	    }
    
 	    lvltxt = "Ready to move on? Pick where to go next!";
-	    if ( currentLvl.getLChild() == null && currentLvl.getRChild() == null){
-		lvltxt = "You have completed all the levels!";
-		return;
-	    } else if (currentLvl.getLChild() == null){
-		lvltxt += "\n\t2: " + currentLvl.getRChild().getName();
-	    } else if (currentLvl.getRChild() == null){
+	    if ( currentLvl.getLChild() == null && currentLvl.getRChild() == null) {
+		break;
+	    }
+	    else if (currentLvl.getLChild() == null){
+		lvltxt += "\n\t1: " + currentLvl.getRChild().getName();
+	    }
+	    else if (currentLvl.getRChild() == null){
 		lvltxt += "\n\t1: " + currentLvl.getLChild().getName();
-	    } else {
+	    }
+	    else {
 		lvltxt += "\n\t1: " + currentLvl.getLChild().getName();
 		lvltxt += "\n\t2: " + currentLvl.getRChild().getName();
 	    }
@@ -279,6 +287,16 @@ public class Driver {
 		_player.setLevel( _board.levelUpRight() );
 	    }
 	}//end while loop
+
+	if ( _player.getHealth() == 0 ) {
+	    System.out.println( "Aww man, you ran out of health! Maybe you aren't ready to go to Japan yet. Go talk to Helinski-sensei about tutoring.");
+	}
+	else {
+	    String endtxt = "You made it, nice job!";
+	    endtxt += "\nIn your travels, you found " + _player.getMochi() + " piece(s) of mochi and finished the trip with " + _player.getHealth() + "/100 of your health.";
+	    endtxt += "\nThanks for playing!.";
+	    System.out.println(endtxt);
+	}
 	
     }//end main
 
