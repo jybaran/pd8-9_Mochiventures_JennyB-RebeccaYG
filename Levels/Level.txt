@@ -3,3 +3,5 @@ FushimiInari
 GoldenPavilion
 Shinkansen
 Gion
+Pachinko
+Honenin
