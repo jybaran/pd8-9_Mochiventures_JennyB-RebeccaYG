@@ -64,9 +64,19 @@ public class Player {
 
     public void adjustHealth( int i ) {
 	_health += i;
+	if ( _health > 100 ) {
+	    _health = 100;
+	}
+	else if ( _health < 0 ) {
+	    _health = 0;
+	}
     }
 
     public int getHealth() {
 	return _health;
+    }
+
+    public String getName() {
+	return _name;
     }
 }

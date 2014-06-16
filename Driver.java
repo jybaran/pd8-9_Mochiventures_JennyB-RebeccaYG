@@ -208,13 +208,15 @@ public class Driver {
 		    System.out.println("You give the tanuki " + numMochi + " piece(s) of mochi and it goes away.");
 		}
 		else if ( choice == 2 ) {
+		    int healthcut = (int)( Math.random() * ( 10 + lvlcount ) );
 		    int safe = (int)(Math.random() * 2);
 		    if ( safe == 1 ) {
 			System.out.println("You manage to get away safely.");
 		    }
 		    else {
 			_player.useMochi( numMochi );
-			System.out.println("The tanuki catches you and takes the " + numMochi + " piece(s) of mochi anyway.");
+			_player.adjustHealth( -1 * healthcut );
+			System.out.println("The tanuki catches you and takes the " + numMochi + " piece(s) of mochi anyway. Also, it punches you in the face and you lose " + healthcut + " points of health. Nice going.");
 		    }
 		}
 		else {
@@ -280,8 +282,11 @@ public class Driver {
 	    
 	    int choice = Integer.parseInt(input);
 	    
-	    if ( choice == 1 ) {
+	    if ( choice == 1 && (currentLvl.getLChild() != null) ) {
 		_player.setLevel( _board.levelUpLeft() );
+	    }
+	    else if ( choice == 1 ) {
+		_player.setLevel( _board.levelUpRight() );
 	    }
 	    else {
 		_player.setLevel( _board.levelUpRight() );
@@ -292,7 +297,7 @@ public class Driver {
 	    System.out.println( "Aww man, you ran out of health! Maybe you aren't ready to go to Japan yet. Go talk to Helinski-sensei about tutoring.");
 	}
 	else {
-	    String endtxt = "You made it, nice job!";
+	    String endtxt = "Nice job " + _player.getName() + ", you made it!";
 	    endtxt += "\nIn your travels, you found " + _player.getMochi() + " piece(s) of mochi and finished the trip with " + _player.getHealth() + "/100 of your health.";
 	    endtxt += "\nThanks for playing!.";
 	    System.out.println(endtxt);
