@@ -5,14 +5,14 @@ public class Player {
     String _name;
     Level _level;
     int _health;
-    ItemQueue _iQ;
+    //    ItemQueue _iQ;
     int _mochi;
 
     public Player( Level lvl ) {
 	_name = "Kia";
 	_level = lvl;
 	_health = 100;
-	_iQ = new ItemQueue();
+	//	_iQ = new ItemQueue();
     }
 
     public Player( String name, Level lvl ) {
@@ -29,6 +29,7 @@ public class Player {
 	_level = lvl;
     }
 
+    /*
     public void obtainItem(Item i){
 	_iQ.enqueue(i);
     }
@@ -44,6 +45,7 @@ public class Player {
 	_health += accessed.getEffect();
 	return retStr;
     }
+    */
 
     public void obtainMochi( int i ) {
 	//you get mochi randomly at the start of a level

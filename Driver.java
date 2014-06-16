@@ -14,9 +14,9 @@ public class Driver {
 	RQueue<String> lvlNames = new RQueue<String>();
 
 	try {
-	    Scanner lvlsc = new Scanner( new File("LevelNames.txt") );
+	    Scanner lvlsc = new Scanner( new File("Levels/LevelNames.txt") );
 	    while ( lvlsc.hasNext() ) {
-		lvlNames.enqueue( lvlsc.nextLine() + ".txt" );
+		lvlNames.enqueue( "Levels/" + lvlsc.nextLine() + ".txt" );
 	    }
 	}
 	catch (Exception e) {
@@ -27,9 +27,9 @@ public class Driver {
 	RQueue<String> tanFiles = new RQueue<String>();
 
 	try {
-	    Scanner tansc = new Scanner( new File("TanukiFiles.txt") );
+	    Scanner tansc = new Scanner( new File("Tanuki/TanukiFiles.txt") );
 	    while ( tansc.hasNext() ) {
-		tanFiles.enqueue( tansc.nextLine() + ".txt" );
+		tanFiles.enqueue("Tanuki/" + tansc.nextLine() + ".txt" );
 	    }
 	}
 	catch (Exception e) {
@@ -65,7 +65,7 @@ public class Driver {
 	
 	s = "\n\nHello! Welcome to Mochiventures!\n";
 	s += "Would you like to read the rules before you begin?\n";
-	s += "\t1: Sure.\n2: No thanks, let's play!\n";
+	s += "\t1: Sure.\n\t2: No thanks, let's play!\n";
 	System.out.print(s);
 	
 	//play or rules?
@@ -83,7 +83,7 @@ public class Driver {
 	String name = "";
 
 	if ( inst == 1 ) {
-		String rules = "";
+		String rules = "\n\n";
 	    try {
 		Scanner rc = new Scanner( new File("Rules.txt") );
 		while ( rc.hasNext() ) {
@@ -123,6 +123,8 @@ public class Driver {
 	    lvltxt += _player.getLevel().getDescription() + "\n";
 	    lvltxt += "You found " + randmochi + " pieces of mochi!";
 	    _player.obtainMochi(randmochi);
+
+	    System.out.println(lvltxt);
 
 	    if ( _player.getLevel().hasTanuki() ) {
 
