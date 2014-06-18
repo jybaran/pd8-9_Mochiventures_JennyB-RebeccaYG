@@ -122,3 +122,8 @@ Date: 2014-06-16
 Time: 5:00
 Things Done: After falling asleep last night, I added the items to our game
 By: Keka
+
+Date: 2014-06-18
+Time: 15:30
+Things Done: added randomizaton (before was only randomized once, now randomized after each lvl/tanuki is added to the board)
+By: Jenny
