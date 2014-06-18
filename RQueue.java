@@ -37,7 +37,7 @@ public class RQueue<T> implements Queue<T> {
 	}
 	_size--;
 
-	if ( _size > 1 )  sample();
+	if ( _size > 1 )  spin();
 
 	return retVal;
     }
@@ -47,7 +47,7 @@ public class RQueue<T> implements Queue<T> {
 	return _front.getValue();
     }
 
-    public void sample () {
+    public void spin() {
 	int cycles = (int)( _size * Math.random() );
 	for( int i = 0; i < cycles; i++ )
 	    enqueue( dequeue() );

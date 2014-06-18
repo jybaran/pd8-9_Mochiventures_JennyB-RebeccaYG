@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 //import RandQ.*;
+//eventually i'll figure out how to make it use other folders :(
 
 public class Driver {
 
@@ -23,7 +24,7 @@ public class Driver {
 	catch (Exception e) {
 	    System.out.println("FILE NOT FOUND, YOU ARE A FAILURE AND SHOULD FEEL BAD.");
 	}
-	lvlNames.sample();
+	lvlNames.spin();
 
 	//reads in file of tanuki filenames, makes randq
 	RQueue<String> tanFiles = new RQueue<String>();
@@ -37,7 +38,7 @@ public class Driver {
 	catch (Exception e) {
 	    System.out.println("FILE NOT FOUND, YOU ARE A FAILURE AND SHOULD FEEL BAD.");
 	}
-	tanFiles.sample();
+	tanFiles.spin();
 
 	int tanLeft = tanFiles.getSize(); //# of tanuki to spawn over all lvls
 
@@ -50,11 +51,14 @@ public class Driver {
 	      tanuki in earlier levels??? will fix later*/
 	    if ( rand == 0 && tanLeft != 0 ) {
 		String tanString = tanFiles.dequeue(); //get tanuki string
+		tanFiles.spin();
 		_board.add( new Level( lvlNames.dequeue(), tanString ) );
+		lvlNames.spin();
 		tanLeft--;
 	    }
 	    else {
 		_board.add( new Level( lvlNames.dequeue() ) );
+		lvlNames.spin();
 	    }
 	}
 
